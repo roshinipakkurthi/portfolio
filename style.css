@@ -1,0 +1,170 @@
+:root{
+  --bg:#0b0f14; 
+  --panel:#0e131a; 
+  --card:#111824; 
+  --muted:#91a0b5; 
+  --text:#e6ebf3;
+  --edge:#1a2230; 
+  --accent:#7fb3ff; 
+  --accent2:#22d3ee; 
+  --ring:rgba(127,179,255,.35);
+  --radius:16px; 
+  --shadow:0 12px 28px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; 
+  font-family:Inter, sans-serif; 
+  color:var(--text); 
+  background:var(--bg);
+  display:flex;
+}
+
+/* Sidebar */
+.sidebar{
+  width:260px; 
+  height:100vh; 
+  background:var(--panel);
+  border-right:1px solid var(--edge); 
+  padding:22px; 
+  position:fixed;
+  display:flex; 
+  flex-direction:column; 
+  justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.dot{
+  width:14px;height:14px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+.title{font-weight:700;font-size:20px}
+.subtitle{font-size:12px;color:var(--muted)}
+
+.nav{margin-top:20px;display:grid;gap:6px}
+.nav-link{
+  padding:10px;
+  border-radius:10px;
+  color:var(--muted);
+  text-decoration:none;
+  transition:.25s;
+}
+.nav-link.active,
+.nav-link:hover{
+  color:var(--text);
+  background:#111d2b;
+}
+
+/* ✅ LIGHTER EMAIL / GITHUB / LINKEDIN LINKS */
+.meta{
+  font-size:13px;
+  display:grid;
+  gap:6px;
+  margin-top:auto;
+  padding-top:14px;
+  border-top:1px solid #1a2534;
+}
+.meta-link{
+  color:#c9d6ea;   /* Lightened */
+  text-decoration:none;
+  transition:.25s ease;
+}
+.meta-link:hover{
+  color:var(--accent2);
+  text-shadow:0 0 6px var(--accent2);
+}
+.meta-note{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* Main content */
+.main{
+  margin-left:260px;
+  padding:24px;
+  width:100%;
+}
+
+/* Cards */
+.card{
+  background:var(--card);
+  border:1px solid var(--edge); 
+  border-radius:var(--radius);
+  padding:18px; 
+  margin-bottom:20px;
+  opacity:0; 
+  transform:translateY(18px);
+  transition:
+    opacity .7s ease, 
+    transform .7s ease, 
+    border-color .35s, 
+    box-shadow .35s;
+}
+
+/* Hover Motion + Soft Glow */
+.card:hover{
+  transform:translateY(-4px);
+  border-color:var(--accent);
+  box-shadow:0 14px 38px rgba(127,179,255,.18);
+}
+
+/* Animated Section Heading (A) */
+.card h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+  font-weight: 700;
+  font-family: Poppins;
+}
+.card h2::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width .6s ease;
+}
+.card:hover h2::after {
+  width: 100%;
+}
+
+/* Fade-In Scroll Animation (C) */
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* List + Internship items */
+.item h3{margin:0 0 6px;font-weight:600}
+ul{padding-left:18px}
+ul li{margin:6px 0}
+
+/* Back to Top Button */
+#backToTop{
+  position:fixed; 
+  bottom:30px; 
+  right:30px; 
+  width:46px;
+  height:46px;
+  border-radius:50%; 
+  border:none; 
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#000; 
+  font-size:20px; 
+  display:none; 
+  transition:.25s;
+}
+#backToTop:hover{
+  transform:translateY(-4px) scale(1.06);
+}
+
+/* Footer */
+.footer{
+  text-align:center;
+  color:var(--muted);
+  margin-top:20px;
+}
